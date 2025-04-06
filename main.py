@@ -23,13 +23,20 @@ def main():
   player = Player(x= SCREEN_WIDTH / 2, y= SCREEN_HEIGHT / 2)
 
   while True:
-    screen.fill("black")
-    player.draw(screen)
-    pygame.display.flip()
-
-    clock.tick(60)
 
     dt = clock.get_time() / 1000
+
+    Player.update(dt)
+    screen.fill("black")
+  
+    player.draw(screen)
+    
+    pygame.display.flip()
+    
+    
+    clock.tick(60)
+
+    
 
     
 
