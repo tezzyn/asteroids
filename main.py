@@ -18,39 +18,40 @@ def main():
 
   clock = pygame.time.Clock()
 
+  player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
   dt = 0
 
-  player = Player(x= SCREEN_WIDTH / 2, y= SCREEN_HEIGHT / 2)
+  
 
   while True:
-
-    dt = clock.get_time() / 1000
-
-    Player.update(dt)
-    screen.fill("black")
-  
-    player.draw(screen)
-    
-    pygame.display.flip()
-    
-    
-    clock.tick(60)
-
-    
-
-    
-
-
-
-
-
-
-
-
-
     for event in pygame.event.get():
       if event.type == pygame.QUIT:
         return
+
+    screen.fill("black")
+    player.draw(screen)
+    player.update(dt)
+    
+    pygame.display.flip()
+    
+    #clock.get_time()
+
+    clock.tick(60)
+    
+    dt = clock.tick(60) / 1000
+
+    
+
+
+
+
+
+
+
+
+
+    
 
 
 if __name__ == "__main__":
