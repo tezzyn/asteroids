@@ -1,7 +1,6 @@
-import pygame, circleshape
+import pygame, circleshape, asteroid
 from constants import *
 from player import *
-from asteroid import *
 from asteroidfield import *
 #from circleshape
 
@@ -15,11 +14,13 @@ def main():
 
   updatable = pygame.sprite.Group()
   drawable = pygame.sprite.Group()
-  asteroid = pygame.sptite.Group()
+  asteroids = pygame.sprite.Group()
 
   Player.containers = (updatable, drawable)
 
-  Asteroid.containers = (asteroid, updatable, drawable)
+  Asteroid.containers = (asteroids, updatable, drawable)
+
+  AsteroidField.containers = (updatable)
   
 
   screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -28,13 +29,10 @@ def main():
 
   player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
-  AsteroidField()
+  field = AsteroidField()
+
 
   dt = 0
-
-  updatable.add(player)
-  updatable.add(AsteroidField)
-
 
 
 
