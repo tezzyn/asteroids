@@ -1,10 +1,11 @@
 import sys
-import pygame, circleshape, asteroid
+import pygame
 from constants import *
-from player import *
-from asteroidfield import *
-from bullet import *
-#from circleshape
+from player import Player
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
+from bullet import Shot
+
 
 def main():
 
@@ -32,7 +33,7 @@ def main():
 
   Shot.containers = (updatable, drawable, bullets)
 
-  #bullet = Shot()
+
 
 
   

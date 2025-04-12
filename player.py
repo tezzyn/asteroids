@@ -41,11 +41,13 @@ class Player(CircleShape):
     keys = pygame.key.get_pressed()
 
     if keys[pygame.K_SPACE]:
+       
+       shot = self.shoot()
 
-      if self.timer <= 0:
-          shot = self.shoot()
+      #if self.timer <= 0:
+       #   shot = self.shoot()
 
-          self.timer = PLAYER_SHOOT_COOLDOWN
+        #  self.timer = PLAYER_SHOOT_COOLDOWN
         
 
     if keys[pygame.K_a]:
@@ -68,6 +70,9 @@ class Player(CircleShape):
     self.position += forward * PLAYER_SPEED * dt
 
   def shoot(self):
+    if self.timer > 0:
+      return
+    self.timer = PLAYER_SHOOT_COOLDOWN
     
     #print("pew pew")
     bullet = Shot(self.position.x, self.position.y)
