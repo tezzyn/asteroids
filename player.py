@@ -3,7 +3,7 @@
 
 from circleshape import *
 from constants import PLAYER_RADIUS, PLAYER_SHOOT_SPEED, PLAYER_TURN_SPEED, PLAYER_SPEED
-from shot import Shot
+from bullet import *
 
 
 class Player(CircleShape):
@@ -38,7 +38,7 @@ class Player(CircleShape):
 
     if keys[pygame.K_SPACE]:
         #print("pew pew")
-        self.shoot(dt)
+        shot = self.shoot()
 
     if keys[pygame.K_a]:
         self.rotate(-dt)
@@ -59,10 +59,14 @@ class Player(CircleShape):
     forward = pygame.Vector2(0, 1).rotate(self.rotation)
     self.position += forward * PLAYER_SPEED * dt
 
-  def shoot(self, dt):
+  def shoot(self):
     
     #print("pew pew")
-    shot = Shot
-    shot.velocity = pygame.Vector2(0,1).rotate(self.rotation)
+    bullet = Shot(self.position.x, self.position.y)
+    fire = pygame.Vector2(0,1).rotate(self.rotation)
+    bullet.velocity += fire * PLAYER_SHOOT_SPEED
+
+    return bullet
     
-    shot.position *= shot.velocity * PLAYER_SHOOT_SPEED * dt
+    #not a bug but a feature
+    #self.position += self.shot.velocity * PLAYER_SHOOT_SPEED * dt
