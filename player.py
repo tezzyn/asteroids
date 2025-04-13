@@ -42,7 +42,7 @@ class Player(CircleShape):
 
     if keys[pygame.K_SPACE]:
        
-       shot = self.shoot()
+      shot = self.shoot()
 
       #if self.timer <= 0:
        #   shot = self.shoot()

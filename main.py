@@ -35,7 +35,7 @@ def main():
 
 
 
-
+  
   
 
   dt = 0
@@ -58,6 +58,13 @@ def main():
 
     for items in drawable:
       items.draw(screen)
+
+    for asteroid in asteroids:
+      for rounds in bullets:
+        if rounds.collide(asteroid):
+          rounds.kill()
+          asteroid.split()
+          
 
     
 
