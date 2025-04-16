@@ -22,8 +22,6 @@ def main():
   bullets = pygame.sprite.Group()
 
   
-
-  
   Asteroid.containers = (asteroids, updatable, drawable)
   AsteroidField.containers = (updatable)
   asteroid_field = AsteroidField()
@@ -34,9 +32,12 @@ def main():
   Shot.containers = (updatable, drawable, bullets)
 
 
+  bg_img = pygame.image.load("img/beautiful_space_view-wallpaper-1280x720.jpg")
 
+  score = 0
   
-  
+  bg_color = (0,0,0)
+
 
   dt = 0
 
@@ -50,11 +51,13 @@ def main():
 
     for item in asteroids:
 
-      if item.collide(player):
-        #print("Game Over!")
+      if item.collide(player): 
+        print(f"score = {score}")
         sys.exit("Game Over!")
 
-    screen.fill("black")
+    screen.fill(bg_color)
+    screen.blit(bg_img, (0,0))
+    
 
     for items in drawable:
       items.draw(screen)
@@ -62,6 +65,8 @@ def main():
     for asteroid in asteroids:
       for rounds in bullets:
         if rounds.collide(asteroid):
+          score += 1
+          
           rounds.kill()
           asteroid.split()
           

@@ -13,7 +13,12 @@ class Asteroid(CircleShape):
     
 
     def draw(self, screen):
-        pygame.draw.circle(screen, "white", self.position, self.radius, 2)
+
+
+        polygon = [(self.position.x, self.position.y), (self.position.x+60, self.position.y+60), (self.position.x+self.radius, self.position.y)]
+        #pygame.draw.circle(screen, "white", self.position, self.radius, 2)
+        pygame.draw.polygon(screen, "white", polygon, 2)
+
 
     def update(self, dt):
         self.position += self.velocity * dt
@@ -35,9 +40,6 @@ class Asteroid(CircleShape):
 
             split_asteroid1.velocity = vec_1
             split_asteroid2.velocity = vec_2
-            
-            #random_angle = self.velocity.random(traj)
-            #random_nangle = self.velocity.random(-traj)
 
 
     

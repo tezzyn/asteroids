@@ -2,7 +2,7 @@
 
 
 from circleshape import *
-from constants import PLAYER_RADIUS, PLAYER_SHOOT_COOLDOWN, PLAYER_SHOOT_SPEED, PLAYER_TURN_SPEED, PLAYER_SPEED
+from constants import *
 from bullet import *
 
 
@@ -12,9 +12,6 @@ class Player(CircleShape):
 
     self.rotation = 0
     self.timer = 0
-
-
-
 
 
   # in the player class
@@ -44,12 +41,10 @@ class Player(CircleShape):
        
       shot = self.shoot()
 
-      #if self.timer <= 0:
-       #   shot = self.shoot()
 
-        #  self.timer = PLAYER_SHOOT_COOLDOWN
-        
-
+    if keys[pygame.K_b]:
+      self.boost(dt)
+         
     if keys[pygame.K_a]:
         self.rotate(-dt)
         
@@ -79,9 +74,9 @@ class Player(CircleShape):
     fire = pygame.Vector2(0,1).rotate(self.rotation)
     bullet.velocity += fire * PLAYER_SHOOT_SPEED
 
-
-
     return bullet
     
-    #not a bug but a feature
-    #self.position += self.shot.velocity * PLAYER_SHOOT_SPEED * dt
+  
+  def boost(self, dt):
+    boosty = pygame.Vector2(0, 1).rotate(self.rotation)
+    self.position += boosty * PLAYER_BOOST_SPEED * dt
