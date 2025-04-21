@@ -29,6 +29,7 @@ def main():
   Player.containers = (updatable, drawable, bullets)
   player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
+
   Shot.containers = (updatable, drawable, bullets)
 
 
@@ -41,6 +42,8 @@ def main():
 
   dt = 0
 
+  lifes = player.lives()
+
 
   while True:
     for event in pygame.event.get():
@@ -51,12 +54,18 @@ def main():
 
     for item in asteroids:
 
-      if item.collide(player): 
-        print(f"score = {score}")
-        sys.exit("Game Over!")
+      if item.collide(player):
+        lifes -= 1
+        if lifes <= 0: 
+          print(f"score = {score}")
+          sys.exit("Game Over!")
+        else:
+          player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+        
 
     screen.fill(bg_color)
     screen.blit(bg_img, (0,0))
+    
     
 
     for items in drawable:

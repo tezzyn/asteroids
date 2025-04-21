@@ -14,7 +14,6 @@ class Asteroid(CircleShape):
 
     def draw(self, screen):
 
-
         polygon = [(self.position.x, self.position.y), (self.position.x+60, self.position.y+60), (self.position.x+self.radius, self.position.y)]
         #pygame.draw.circle(screen, "white", self.position, self.radius, 2)
         pygame.draw.polygon(screen, "white", polygon, 2)
@@ -22,6 +21,19 @@ class Asteroid(CircleShape):
 
     def update(self, dt):
         self.position += self.velocity * dt
+
+        if self.position.x < 0:
+            self.position.x = SCREEN_WIDTH
+
+        if self.position.x > SCREEN_WIDTH:
+            self.position.x = 0
+    
+        if self.position.y < 0:
+            self.position.y = SCREEN_HEIGHT
+    
+        if self.position.y > SCREEN_HEIGHT:
+            self.position.y = 0
+
 
     def split(self):
         self.kill()

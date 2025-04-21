@@ -33,6 +33,19 @@ class Player(CircleShape):
 
   def update(self, dt):
 
+    if self.position.x < 0:
+      self.position.x = SCREEN_WIDTH
+
+    if self.position.x > SCREEN_WIDTH:
+      self.position.x = 0
+    
+    if self.position.y < 0:
+      self.position.y = SCREEN_HEIGHT
+    
+    if self.position.y > SCREEN_HEIGHT:
+      self.position.y = 0
+
+
     self.timer -= dt 
 
     keys = pygame.key.get_pressed()
@@ -80,3 +93,9 @@ class Player(CircleShape):
   def boost(self, dt):
     boosty = pygame.Vector2(0, 1).rotate(self.rotation)
     self.position += boosty * PLAYER_BOOST_SPEED * dt
+
+  def lives(self):
+    self.life = 3
+    return self.life
+  
+ 
