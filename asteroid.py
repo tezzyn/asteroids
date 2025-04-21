@@ -15,8 +15,9 @@ class Asteroid(CircleShape):
     def draw(self, screen):
 
         polygon = [(self.position.x, self.position.y), (self.position.x+60, self.position.y+60), (self.position.x+self.radius, self.position.y)]
-        #pygame.draw.circle(screen, "white", self.position, self.radius, 2)
-        pygame.draw.polygon(screen, "white", polygon, 2)
+        pygame.draw.circle(screen, "white", self.position, self.radius, 2, True, False, True)
+        pygame.draw.circle(screen, "red", self.position, self.radius+8, 2, False, True, False)
+        #pygame.draw.polygon(screen, "white", polygon, 2)
 
 
     def update(self, dt):
