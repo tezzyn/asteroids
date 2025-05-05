@@ -11,7 +11,7 @@ class Bomb(CircleShape):
     
 
     def draw(self, screen):
-        pygame.draw.circle(screen, (255, 163, 26), self.position, SHOT_RADIUS, 2)
+        pygame.draw.circle(screen, (255, 163, 26), self.position, SHOT_RADIUS*3, 4)
 
     def update(self, dt):
         self.position += self.velocity * dt

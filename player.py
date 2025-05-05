@@ -106,6 +106,7 @@ class Player(CircleShape):
   
   def bomb(self):
 
+
     if self.boom > 0:
       return
     self.boom = PLAYER_SHOOT_COOLDOWN * 10

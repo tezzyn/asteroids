@@ -14,10 +14,14 @@ class Asteroid(CircleShape):
 
     def draw(self, screen):
 
+        ashape = [(self.position.x, self.position.y), (self.position.x+10, self.position.y+10), (self.position.x+30, self.position.y+10), (self.position.x+40, self.position.y), (self.position.x+40, self.position.y-10), (self.position.x+30, self.position.y-20), (self.position.x, self.position.y-20)]
+
+        poly = [(self.position.x, self.position.y), (self.position.x+20, self.position.y), (self.position.x+30, self.position.y+20), (self.position.x+40, self.position.y), (self.position.x+60, self.position.y), (self.position.x, self.position.y-40), (self.position.x, self.position.y)]
+
         polygon = [(self.position.x, self.position.y), (self.position.x, self.position.y+10), (self.position.x, self.position.y+20), (self.position.x+10, self.position.y), (self.position.x+20, self.position.y+10), (self.position.x+20, self.position.y), (self.position.x+20, self.position.y-15)]
         #pygame.draw.circle(screen, "white", self.position, self.radius, 2, True, False, True)
         pygame.draw.circle(screen, "red", self.position, self.radius+8, 2, False, True, False)
-        pygame.draw.polygon(screen, "white", polygon, 2)
+        pygame.draw.polygon(screen, "white", ashape, 2)
 
 
     def update(self, dt):
