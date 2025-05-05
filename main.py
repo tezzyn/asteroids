@@ -5,6 +5,7 @@ from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from bullet import Shot
+from bomba import Bomb
 
 
 def main():
@@ -20,17 +21,22 @@ def main():
   drawable = pygame.sprite.Group()
   asteroids = pygame.sprite.Group()
   bullets = pygame.sprite.Group()
+  bomba = pygame.sprite.Group()
 
   
   Asteroid.containers = (asteroids, updatable, drawable)
   AsteroidField.containers = (updatable)
   asteroid_field = AsteroidField()
 
-  Player.containers = (updatable, drawable, bullets)
+  Player.containers = (updatable, drawable, bullets, bomba)
   player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
 
   Shot.containers = (updatable, drawable, bullets)
+
+  Bomb.containers = (updatable, drawable, bomba)
+
+  # boom = Bomb()
 
 
   bg_img = pygame.image.load("img/beautiful_space_view-wallpaper-1280x720.jpg")
@@ -77,6 +83,14 @@ def main():
           score += 1
           
           rounds.kill()
+          asteroid.split()
+
+    for asteroid in asteroids:
+      for booms in bomba:
+        if booms.collide(asteroid):
+          score += 1
+          
+          booms.kill()
           asteroid.split()
           
 
