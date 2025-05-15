@@ -90,8 +90,16 @@ def main():
         if booms.collide(asteroid):
           score += 1
           
-          booms.kill()
+          #booms.kill()
           asteroid.split()
+
+    for booms in bomba:
+      if getattr(booms, "exploded", False):
+        for asteroid in asteroids:
+          # Use distance check for explosion radius
+          if pygame.Vector2.distance_to(booms.position, asteroid.position) < booms.explosion_radius:
+            score += 1
+            asteroid.split()
           
 
     
